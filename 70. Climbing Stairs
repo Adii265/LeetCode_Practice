@@ -1,0 +1,23 @@
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        m = []
+        m.insert(0,0)
+        m.insert(1,1)
+        m.insert(2,2)
+        sum = 0
+        if(n == 1):
+            return m[1]
+        if(n == 2):
+            return m[2]
+        
+        count = 3
+        while(count<=n):
+            
+            sum = m[count-1] + m[count-2]
+            #print(m[count-1], m[count-2],sum)
+            
+            m.insert(count,sum)
+            count = count+1
+        return sum
+           
+        
