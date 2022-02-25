@@ -1,0 +1,84 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+
+
+struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2)
+{
+    struct ListNode *t1 = l1;
+    struct ListNode *t2 = l2;
+    struct ListNode *ansList;
+    int len1 = 0, len2 = 0;
+    while(t1 != NULL)
+    {
+        len1+=1;
+        t1 = t1->next;
+    }
+    while(t2 != NULL)
+    {
+        len2+=1;
+        t2 = t2->next;
+    }
+    if(len1>len2)
+        ansList = l1;
+    else
+        ansList = l2;
+    t1 = l1;
+    t2 = l2;
+    struct ListNode *t3 = ansList;
+    struct ListNode *prev;
+    int carry =0;
+    while(t1 != NULL && t2 != NULL)
+    {
+        int sum = t1->val+t2->val +carry;
+        t3->val = (sum)%10;
+        carry = sum/10;
+        prev = t3;
+        t1 = t1->next;
+        t2 = t2->next;
+        t3 = t3->next;
+        
+        printf("0");
+    }
+    while(t2 == NULL && t1 != NULL )
+    {
+        //printf("%d",(t1->val + carry)/10);
+        int sum = t1->val + carry;
+        t3->val = (sum)%10;
+        carry = (sum/10);
+        //printf("carry %d",carry);
+        prev = t3;
+        t1 = t1->next;
+        t3 = t3->next;
+        
+        printf("1");
+    }
+    while(t1 == NULL && t2 != NULL)
+    {
+        
+        int sum = t2->val + carry;
+        t3->val = (sum)%10;
+        carry = (sum/10);
+        //printf("carry %d",carry);
+        prev = t3;
+        t2 = t2->next;
+        t3 = t3->next;
+        printf("2");
+    }
+    if(carry == 1 && t1 == NULL && t2 == NULL)
+    {
+        
+        struct ListNode *temp = malloc(sizeof(struct ListNode));
+        temp->val = carry;
+        temp->next = NULL;
+        prev->next = temp;
+        printf("3");
+    }
+    
+    
+    return ansList;
+}
