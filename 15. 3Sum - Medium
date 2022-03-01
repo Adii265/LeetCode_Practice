@@ -1,0 +1,29 @@
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        l = []
+        if(len(nums)<3):
+            return l
+        else:
+            nums.sort()
+            print(nums)
+            for i in range(0, len(nums)):
+                j = i+1
+                k = len(nums)-1
+                while(j<k):
+                    #print(i,j,k)
+                    sum = nums[i]+nums[j]+nums[k]
+                    #print(sum)
+                    if(sum == 0 and i!=j and j!=k and i !=k):
+                        #print(nums[i],nums[j], nums[k])
+                        l1 = sorted([nums[i],nums[j], nums[k]])
+                        if l1 not in l:
+                            l.append(l1)
+                        k = k-1
+                    elif(sum<0):
+                        j= j+1
+                    else:
+                        k = k-1
+                    
+                    
+        return l
+    
