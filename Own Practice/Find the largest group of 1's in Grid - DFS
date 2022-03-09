@@ -1,0 +1,34 @@
+matrix = [[1,1,0,0,1],[1,0,0,0,1],[1,0,0,0,1],[1,0,1,1,1],[0,0,1,1,1]]
+for i in matrix:
+    print(i)
+print()
+
+def DFS(matrix,row,col):
+    
+	if row >= len(matrix) or col >= len(matrix) or row < 0 or col < 0:
+		return 0
+	if matrix[row][col] == 0:
+	    return 0
+	matrix[row][col] = 0
+	size = 1
+	
+	
+	for i in range(row-1,row+2):
+	    for j in range(col-1,col+2):
+	        #print(i,j)
+	        if i!= row or j != col:
+	            size+=DFS(matrix,i,j)
+	
+	return size
+    
+def calculate(matrix):
+    
+	max_size = -1
+	for i in range(0,len(matrix)):
+	    for j in range(0,len(matrix)):
+	        if matrix[i][j] == 1:
+	            #print("i,j",i,j)
+	            size = DFS(matrix,i,j)
+	            max_size = max(size,max_size)
+	return max_size
+print(calculate(matrix))
