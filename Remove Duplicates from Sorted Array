@@ -1,0 +1,19 @@
+class Solution {
+    public int removeDuplicates(int[] nums) 
+    {
+        int pos = 1;
+        int count = 1;
+        int last_element = nums[0];
+        for(int i = 1; i< nums.length; i++)
+        {
+            if(nums[i] != last_element)
+            {
+                last_element = nums[i];
+                count+=1;
+                nums[pos] = last_element;
+                pos+=1;
+            }
+        }
+        return count;
+    }
+}
