@@ -1,0 +1,14 @@
+class Solution {
+private:
+    vector<int> fib = {1,1};
+    int maxV = 2;
+public:
+    int climbStairs(int n)
+    {
+        if(n<maxV)
+            return fib[n%2];
+        fib[n%2] = climbStairs(n-1)+climbStairs(n-2);
+        maxV = n;
+        return fib[n%2]; 
+    }
+};
