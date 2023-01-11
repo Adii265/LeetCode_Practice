@@ -1,0 +1,12 @@
+class Solution {
+public:
+    int countOdds(int low, int high) 
+    {
+        int a = high-low;
+        if(high %2 ==0 and low%2 ==0)
+            return a/2;
+        else
+            return a/2 +1;
+        
+    }
+};
