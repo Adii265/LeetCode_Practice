@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int pivotIndex(vector<int>& nums) 
+    {
+        int r_s = 0;
+        int l_s = 0;
+        for(int i = 1 ; i <nums.size();i++)
+            r_s+=nums[i];
+        for(int i = 0; i <nums.size();i++)
+        {
+            //cout<<l_s<<r_s<<endl;
+            if(l_s == r_s)
+                return i;
+            else
+            {
+                l_s+=nums[i];
+                if(i+1<nums.size())
+                    r_s-=nums[i+1];
+            }
+        }
+        return -1;
+    }
+};
