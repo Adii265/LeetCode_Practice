@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int nearestValidPoint(int x, int y, vector<vector<int>>& p)
+    {
+        int pos = -1;
+        int d = 10000;
+        for(int i = 0 ; i < p.size();i++)
+        {
+            if(x == p[i][0] or y == p[i][1])
+            {
+                int d1 = abs(x-p[i][0])+abs(y-p[i][1]);
+                if(d1<d)
+                {  
+                    pos = i;
+                    d = d1;
+                }
+            }
+            //cout<<d<<" "<<pos<<" ";
+        }
+        return pos;
+    }
+};
