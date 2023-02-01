@@ -1,0 +1,9 @@
+class Solution {
+public:
+    int strStr(string h, string n)
+    {   
+        if(h.find(n)>= h.length())
+            return -1;
+        return h.find(n);
+    }
+};
