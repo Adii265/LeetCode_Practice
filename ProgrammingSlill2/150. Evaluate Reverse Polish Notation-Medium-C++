@@ -1,0 +1,42 @@
+int op(int b,int c,string s)
+{
+    int d;
+    if(s == "+") 
+        d = b+c;
+    else if(s == "-")
+        d = c-b;
+    else if(s == "*")
+        d = b*c;
+    else
+        d = c/b;
+    return d;        
+}
+class Solution {
+public:
+ 
+    int evalRPN(vector<string>& t)
+    {
+        int a = 0;
+        stack<int> st;
+        for(int i = 0 ; i <t.size(); i++)
+        {
+            if(st.empty() == false && (t[i] == "*" || t[i] == "+" || t[i] == "/" || t[i] == "-" ))
+            {
+                int b = st.top();
+                st.pop();
+                int c = st.top();
+                st.pop();
+                string s = t[i];
+                a = op(b,c,s);
+                st.push(a);
+            }
+            else
+            {
+                st.push(stoi(t[i]));
+                //st.push(r);
+            }
+            //cout<<st.top()<<" ";
+        }
+        return st.top();
+    }
+};
