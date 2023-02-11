@@ -1,0 +1,24 @@
+int retSum(int a)
+{
+    int s = 0;
+    while(a)
+    {
+        s+=pow(a%10,2);
+        a/=10;
+    }
+    return s;
+}
+class Solution {
+public:
+    bool isHappy(int n)
+    {
+        int s = retSum(n);
+        cout<<s<<endl;
+        if(s == 1 or s == 7)
+            return true;
+        if(s <= 9)
+            return false;
+        return isHappy(s);
+        
+    }
+};
